@@ -1,0 +1,10 @@
+@media screen and (min-width: 768px) {
+    .container {
+        margin-top: 100px;
+        width: 450px;
+    }
+}
+
+.card {
+    padding: 2em;
+}
