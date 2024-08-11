@@ -1,14 +1,15 @@
+<app-loding *ngif="loading"></app-loding>
 <div class="container">
     <div class="card">
         <form>
         <h1 class="h3 mb-3 fw-normal text-center">Salutar Fisioterapia</h1>
     
         <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="usuario.login">
             <label for="floatingInput">Seu Login</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="usuario.senha" (keyup.enter)="logar()">
             <label for="floatingPassword">Sua Senha</label>
         </div>
     
