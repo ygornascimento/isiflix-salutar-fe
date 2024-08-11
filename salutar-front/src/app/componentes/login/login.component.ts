@@ -16,7 +16,7 @@ import { LodingComponent } from "../loding/loding.component";
 })
 export class LoginComponent {
 
-  public usuario: Usuario = new Usuario()
+  public usuario: Usuario = new Usuario();
   public loading: boolean = false;
 
   public constructor(private route: Router, private service: LoginService) {
@@ -25,10 +25,11 @@ export class LoginComponent {
 
   public logar() {
     this.loading = true;
+    console.log(this.usuario);
     this.service
       .efetuarLogin(this.usuario)
       .subscribe(
-          {
+          { 
             next: (res: SalutarToken) => {
               this.loading = false;
               alert("Login deu certo!!!")
