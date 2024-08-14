@@ -13,17 +13,13 @@ import { Router } from '@angular/router';
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
 
   public lista: FichaPaciente[] = [];
   public keyword: string = "";
   public loading: boolean = false;
 
   public constructor(private fichaservice: FichaService, private router: Router) {}
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
 
   public pesquisar() {
     this.loading = true;
