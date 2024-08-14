@@ -4,13 +4,13 @@ import { LoginService } from '../../servicos/login.service';
 import { Usuario } from '../../model/Usuario';
 import { FormsModule } from '@angular/forms';
 import { SalutarToken } from '../../model/SalutarToken';
-import { LodingComponent } from "../loding/loding.component";
 import { CommonModule } from '@angular/common';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, LodingComponent, CommonModule],
+  imports: [FormsModule, CommonModule, LoadingComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
