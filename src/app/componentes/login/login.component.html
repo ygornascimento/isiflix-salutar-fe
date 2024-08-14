@@ -1,0 +1,23 @@
+<app-loading *ngIf="loading"></app-loading>
+<div class="container">
+    <div class="card">
+        <form>
+            <h1 class="h3 mb-3 fw-normal text-center">Salutar Fisioterapia</h1>
+        
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="usuario.login" [ngModelOptions]="{standalone: true}">
+                <label for="floatingInput">Seu Login</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}" (keyup.enter)="logar()">
+                <label for="floatingPassword">Sua Senha</label>
+            </div>
+        
+            <br>
+            <button class="btn btn-primary w-100 py-2" type="submit" (click)="logar()">Acessar</button>
+            <br>
+            <br>
+            <span id="msg" *ngIf="mensagem != ''">{{ mensagem }}</span>
+        </form>
+    </div>
+</div>
