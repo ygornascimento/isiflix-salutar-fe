@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MainComponent } from '../main/main.component';
 import { LoginService } from '../../servicos/login.service';
 import { Usuario } from '../../model/Usuario';
 import { FormsModule } from '@angular/forms';
@@ -25,10 +24,7 @@ export class LoginComponent {
 
   public logar() {
     this.loading = true;
-    console.log(this.usuario);
-    this.service
-      .efetuarLogin(this.usuario)
-      .subscribe(
+    this.service.efetuarLogin(this.usuario).subscribe(
           { 
             next: (res: SalutarToken) => {
               this.loading = false;
