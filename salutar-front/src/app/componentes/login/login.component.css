@@ -8,3 +8,21 @@
 .card {
     padding: 2em;
 }
+
+#msg {
+    margin-top: 5px;
+    height: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 7px;
+    color: red;
+    font-weight: bold;
+    background-color: rgb(242, 168, 168);
+}
+
+span {
+    display: table;
+    margin: 0 auto;
+}
