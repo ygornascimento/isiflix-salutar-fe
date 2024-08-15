@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FichaPaciente } from '../../model/FichaPaciente';
-import { FichaService } from '../../servicos/ficha.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoadingComponent } from "../loading/loading.component";
 import { Router } from '@angular/router';
+import { FichaService } from '../../services/ficha.service';
 
 @Component({
   selector: 'app-main',
