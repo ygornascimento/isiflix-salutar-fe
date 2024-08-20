@@ -1,23 +1,103 @@
 <div class="container mt-3">
-    <div class="row">
-        <div class="col-12 text-center">
-            <h3>Ficha do Paciente</h3>
-        </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <h3>Ficha do Paciente</h3>
     </div>
+  </div>
 
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" href="infoBasica">Informações Básicas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">Diagnóstico Clínico</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">Queixa Principal</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">HMP/HMA</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">Medicações</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">Exames Complementares</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">Exame Físico</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">Conduta Clínica</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">Diagnóstico</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">Mídias</a>
+    </li>
+  </ul>
+</div>
+<br />
+<div class="container">
+  <section id="infoBasica">
+    <h4>Informações Básicas</h4>
+    <div class="row">
+      <div class="col-8">
+        <div class="row">
+          <div class="col-12">
+            <label class="mt-1" for="txtNome">Nome do Paciente</label>
+            <input type="text" class="form-control" id="txtNome">
+          </div>
+          <div class="col-6">
+            <label class="mt-1" for="txtSexo">Sexo</label>
+            <select id="txtSexo" class="form-control">
+              <option value="M">Masculino</option>
+              <option value="F">Feminino</option>
+              <option value="X">Prefiro Não Informar</option>
+            </select>
+          </div>
+          <div class="col-6">
+            <label class="mt-1" for="txtCep">CEP</label>
+            <input type="text" id="txtCep" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <label class="mt-1" for="txtEndereco">Endereço</label>
+            <input type="text" id="txtEndereco" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <label for="txtNumComplemento">Número/Compl</label>
+            <input type="text" id="txtNumComplemento" class="form-control">
+          </div>
 
+          <div class="col-6">
+            <label for="txtCidade">Cidade</label>
+            <input type="text" id="txtCidade" class="form-control">
+          </div>
+          <div class="col-2">
+            <label for="txtUF">UF</label>
+            <input type="text" id="txtUF" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <label for="txtOcupacao">Ocupação</label>
+            <input type="text" id="txtOcupacao" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="col-4 text-center">
+        <img src="assets/avatar.png" width="100%" />
+        <button class="btn btn-success">Enviar Foto</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="diagnosticoClinico">
+    <h4>Diagnóstico Clínico</h4>
+  </section>
 </div>
