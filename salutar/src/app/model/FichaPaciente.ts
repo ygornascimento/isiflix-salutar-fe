@@ -19,6 +19,6 @@ export class FichaPaciente {
     diagnostico:  string = "";
     evolucaoClinica: string = "";
     uuid:  string = "";
-    linkFoto:  string = "";
+    linkFoto:  string = "/img/avatar.png";
     ativo: number = 0;
   }

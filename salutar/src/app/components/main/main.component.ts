@@ -3,13 +3,13 @@ import { FichaPaciente } from '../../model/FichaPaciente';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoadingComponent } from "../loading/loading.component";
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FichaService } from '../../services/ficha.service';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [FormsModule, CommonModule, LoadingComponent],
+  imports: [FormsModule, CommonModule, LoadingComponent, RouterModule],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })

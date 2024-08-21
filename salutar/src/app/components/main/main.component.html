@@ -10,7 +10,7 @@
         <div class="col-12">
             <label for="keyword">Digite o paciente a ser pesquisado:</label>
             <div class="input-group">
-                <input type="text" id="keyword" class="form-control"[(ngModel)]="keyword">
+                <input type="text" id="keyword" class="form-control"[(ngModel)]="keyword" (keyup.enter)="pesquisar()">
                 <span class="input-group-text">
                     <button class="btn btn-success" (click)="pesquisar()">Perquisar</button>
                 </span>
@@ -20,9 +20,9 @@
     <br/>
     <div class="row" *ngFor="let ITEM of lista">
         <div class="col-12">
-            {{ITEM.nomePaciente}}
+            <a [routerLink]="['/ficha', ITEM.idFicha]">{{ITEM.nomePaciente}}</a>
         </div>
     </div>
 </div>
 
-<button id="adicionar" (click)="adicionarFicha()"><i class="fa-solid fa-2x fa-user-plus"></i></button>
+<a [routerLink]="['/ficha', 'NOVA']"><button id="adicionar"><i class="fa-solid fa-2x fa-user-plus"></i></button></a>
