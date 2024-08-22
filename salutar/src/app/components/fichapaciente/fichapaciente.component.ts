@@ -19,6 +19,9 @@ export class FichapacienteComponent implements OnInit {
   public ficha: FichaPaciente;
   public loading: boolean = false;
   private idFicha: string = "";
+  public msgModal: string = "";
+  public estiloMsg: string = "";
+
 
   public constructor(private cepService: CepService, 
                      private activatedRoute: ActivatedRoute,
@@ -26,7 +29,19 @@ export class FichapacienteComponent implements OnInit {
 
     this.ficha = new FichaPaciente();
     this.idFicha = this.activatedRoute.snapshot.params["id"];
-    console.log(this.idFicha);
+
+    if (this.idFicha != "NOVA") {
+      this.loading = true;
+      this.fichaService.buscarFichaPeloId(this.idFicha).subscribe({
+        next: (res: FichaPaciente) => {
+          this.ficha = res;
+          this.loading = false;
+        },
+        error: (err: any) => {
+          this.loading = false;
+        }
+      });
+    }
   }
 
   ngOnInit(): void {
@@ -46,12 +61,10 @@ export class FichapacienteComponent implements OnInit {
         this.ficha.cidade = res.localidade;
         this.ficha.estado = res.uf;
       },
-
       error: (err: any) => {
-        alert("Impossível recuperar CEP!!!");
+        this.exibirModal("Impossível recuperar CEP.");
         this.loading = false;
       }
-
     });
   }
 
@@ -63,19 +76,40 @@ export class FichapacienteComponent implements OnInit {
     }
   }
 
-  public atualizarFichaExistente() {}
+  public atualizarFichaExistente() {
+    this.loading = true;
+    this.fichaService.atualizarFicha(this.ficha).subscribe({
+      next: (res: FichaPaciente) => {
+        this.ficha = res;
+        this.loading = false;
+        this.exibirModal("Ficha Atualizada com Sucesso!");
+      },
+      error: (err: any) => {
+        this.loading = false;
+        this.exibirModal("Erro ao Atualizar Ficha!");
+      }
+    });
+  }
 
   public gravarNovaFicha() {
     this.loading = true;
-
     this.fichaService.cadastrarNovaFicha(this.ficha).subscribe({
       next: (res: FichaPaciente) => {
         this.loading = false;
         this.ficha = res;
         this.idFicha = this.ficha.idFicha.toString();
-        alert("Ficha cadastrada com sucesso!!!")
+        this.exibirModal("Ficha cadastrada com sucesso!!!");
+      },
+      error: () => {
+        this.loading = false;
+        this.exibirModal("Não foi possível gravar a ficha!");
       }
     });
+  }
+
+  public exibirModal(mensagem: string): void {
+    this.msgModal = mensagem;
+    document.getElementById("btnModalAlerta")?.click();
   }
 
 }

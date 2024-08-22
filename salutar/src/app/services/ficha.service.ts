@@ -26,4 +26,9 @@ export class FichaService {
     let header = this.tokenService.getTokenHeader();
     return this.http.put<FichaPaciente>(environment.apiURL+"/fichas/"+ficha.idFicha, ficha, {headers : header}); 
   }
+
+  public buscarFichaPeloId(id: string): Observable<FichaPaciente> {
+    let header = this.tokenService.getTokenHeader();
+    return this.http.get<FichaPaciente>(environment.apiURL + "/fichas/" + id, {headers : header});
+  }
 }
