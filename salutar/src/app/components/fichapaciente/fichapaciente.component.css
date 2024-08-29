@@ -6,9 +6,7 @@ textarea{
 .nav-link{
     color: green;
 }
-.nav-link:hover{
-    text-shadow: 4px 1px 4px rgba(0,0,0,0.49);
-}
+
 #foto{
     border-radius: 50%;
 }
@@ -21,4 +19,11 @@ textarea{
     border-radius: 50%;
     width: 70px;
     height: 70px;   
+}
+
+.midia {
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+
 }

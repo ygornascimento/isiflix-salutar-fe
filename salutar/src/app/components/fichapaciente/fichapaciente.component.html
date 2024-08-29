@@ -97,7 +97,7 @@
       </div>
       <div class="col-4 text-center">
         <img [src]="ficha.linkFoto" width="100%" />
-        <button class="btn btn-success">Enviar Foto</button>
+        <button class="btn btn-success mt-3" (click)="chamarUpload('profile')">Enviar Foto</button>
       </div>
     </div>
   </section>
@@ -183,11 +183,15 @@
   </section>
   <br/>
   <section id="midias">
-    <h4>Mídias</h4>
-      <div class="row">
+    <h4>Mídias Disponíveis</h4>
+    <div class="row">
+      <div class="col-12">
+        <button class="btn btn-success" (click)="chamarUpload('midia')">Adicionar Fotos/Vídeos</button>
+      </div>
+    </div>
+      <div class="row mt-3" *ngFor="let ITEM of ficha.midias">
         <div class="col-12">
-          <label for="txtMidias">Mídias</label>
-          <input type="text" id="txtMidias" class="form-control">
+          <a class="midia" href="{{ITEM.linkMidia}}" target="_blank"><i class="fa-solid fa-photo-film"></i>  {{ ITEM.descricao }}</a>
         </div>
       </div>
   </section>
@@ -210,6 +214,52 @@
         {{ msgModal }}
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Upload -->
+<button type="button" style="visibility: hidden;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal" id="btnModalUpload">
+  Launch demo modal
+</button>
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Selecione a foto do Paciente.</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="file" id="fileName" class="form-control" (change)="realizarUpload($event)">
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-success" data-bs-dismiss="modal">Upload</button> -->
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Upload Midia-->
+<button type="button" style="visibility: hidden;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#midiaUploadModal" id="btnMidiaModalUpload">
+  Launch demo modal
+</button>
+<div class="modal fade" id="midiaUploadModal" tabindex="-1" aria-labelledby="midiaUploadModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Upload de mídias (Foto/Vídeo)</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="txtDescricaoMidia">Descrição:</label>
+        <input type="text" class="form-control" id="txtDescricaoMidia" [(ngModel)]="midiaDescricao">
+        <input type="file" id="fileName" class="form-control mt-1" (change)="realizarUpload($event)">
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-success" data-bs-dismiss="modal">Upload</button> -->
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
       </div>
     </div>

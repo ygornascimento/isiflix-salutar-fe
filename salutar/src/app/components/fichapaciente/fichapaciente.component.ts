@@ -7,6 +7,9 @@ import { CepService } from '../../services/cep.service';
 import { DadosCEP } from '../../model/DadosCEP';
 import { ActivatedRoute } from '@angular/router';
 import { FichaService } from '../../services/ficha.service';
+import { PathToFile } from '../../model/PathToFile';
+import { UploadService } from '../../services/upload.service';
+import { Midia } from '../../model/Midia';
 
 @Component({
   selector: 'app-fichapaciente',
@@ -21,13 +24,19 @@ export class FichapacienteComponent implements OnInit {
   private idFicha: string = "";
   public msgModal: string = "";
   public estiloMsg: string = "";
+  private pathToFile: PathToFile;
+  private mode: string = "";
+  public midiaDescricao: string = "";
 
 
   public constructor(private cepService: CepService, 
                      private activatedRoute: ActivatedRoute,
-                     private fichaService: FichaService) {
+                     private fichaService: FichaService,
+                     private uploadService: UploadService) {
 
     this.ficha = new FichaPaciente();
+    this.ficha.linkFoto = "/img/avatar.png"
+    this.pathToFile = new PathToFile();
     this.idFicha = this.activatedRoute.snapshot.params["id"];
 
     if (this.idFicha != "NOVA") {
@@ -39,6 +48,7 @@ export class FichapacienteComponent implements OnInit {
         },
         error: (err: any) => {
           this.loading = false;
+          this.exibirModal("Erro ao exibir ficha!");
         }
       });
     }
@@ -112,4 +122,38 @@ export class FichapacienteComponent implements OnInit {
     document.getElementById("btnModalAlerta")?.click();
   }
 
+  public chamarUpload(mode: string): void {
+    this.mode = mode;
+    if (mode == 'profile') {
+      document.getElementById("btnModalUpload")?.click();
+    } else {
+      document.getElementById("btnMidiaModalUpload")?.click();
+    }
+  }
+
+  public realizarUpload(data: any): void {
+    let file = data.target.files[0];
+    let formData = new FormData();
+    formData.append("file", file, file.name);
+    this.loading = true;
+    this.uploadService.uploadFile(formData).subscribe({
+      next: (res: PathToFile) => {
+        this.loading = false;
+        this.pathToFile = res;
+        this.exibirModal("Upload realizado.");
+        if (this.mode == 'profile') {
+          this.ficha.linkFoto = "/img/"+this.pathToFile.path;
+        } else {
+          let midia: Midia = new Midia();
+          midia.descricao = this.midiaDescricao;
+          midia.linkMidia = "/img/"+this.pathToFile.path;
+          this.ficha.midias.push(midia);
+        }
+      },
+      error: (err: any) => {
+        this.loading = false;
+        this.exibirModal("Falha ao realizar Upload.");
+      }
+    });
+  }
 }
