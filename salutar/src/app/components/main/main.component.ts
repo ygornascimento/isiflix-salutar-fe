@@ -46,4 +46,9 @@ export class MainComponent {
     this.router.navigate(['ficha']);
   }
 
+  public logout(): void {
+    localStorage.removeItem("SalutarTK");
+    this.router.navigate(["/"]);
+  }
+
 }

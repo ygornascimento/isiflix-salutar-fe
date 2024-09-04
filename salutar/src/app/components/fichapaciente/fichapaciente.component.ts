@@ -79,7 +79,7 @@ export class FichapacienteComponent implements OnInit {
   }
 
   public salvarFicha() {
-    if (this.idFicha == "NOVA") {
+    if (this.ficha.idFicha == 0) {
       this.gravarNovaFicha();
     } else {
       this.atualizarFichaExistente();

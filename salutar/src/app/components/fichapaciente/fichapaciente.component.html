@@ -14,6 +14,9 @@
       <span class="nav-link" (click)="scroll('diagnosticoClinico')">Diagnóstico Clínico</span>
     </li>
     <li class="nav-item">
+      <span class="nav-link" (click)="scroll('evolucaoClinica')">Evolução Clínica</span>
+    </li>
+    <li class="nav-item">
       <span class="nav-link" (click)="scroll('queixaPrincipal')">Queixa Principal</span>
     </li>
     <li class="nav-item">
@@ -30,9 +33,6 @@
     </li>
     <li class="nav-item">
       <span class="nav-link" (click)="scroll('condutaClinica')">Conduta Clínica</span>
-    </li>
-    <li class="nav-item">
-      <span class="nav-link" (click)="scroll('diagnostico')">Diagnóstico</span>
     </li>
     <li class="nav-item">
       <span class="nav-link" (click)="scroll('midias')">Mídias</span>
@@ -112,6 +112,16 @@
       </div>
   </section>
   <br/>
+  <section id="evolucaoClinica">
+    <h4>Evolução Clínica</h4>
+      <div class="row">
+        <div class="col-12">
+          <label for="txtEvolucaoClinica">Descreva a Evolução Clínica</label>
+          <input type="text" id="txtEvolucaoClinica" class="form-control" [(ngModel)]="ficha.evolucaoClinica">
+        </div>
+      </div>
+  </section>
+  <br/>
   <section id="queixaPrincipal">
     <h4>Queixa Principal</h4>
       <div class="row">
@@ -168,16 +178,6 @@
         <div class="col-12">
           <label for="txtCondutaClinica">Descreva a Conduta Clínica</label>
           <input type="text" id="txtCondutaClinica" class="form-control" [(ngModel)]="ficha.condutaClinica">
-        </div>
-      </div>
-  </section>
-  <br/>
-  <section id="diagnostico">
-    <h4>Diagnóstico</h4>
-      <div class="row">
-        <div class="col-12">
-          <label for="txtDiagnostico">Descreva o Diagnóstico</label>
-          <input type="text" id="txtDiagnostico" class="form-control" [(ngModel)]="ficha.diagnostico">
         </div>
       </div>
   </section>
